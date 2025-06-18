@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Verificar Positivo ou Negativo</title>
+</head>
+<body>
+    <h2>Digite um número inteiro:</h2>
+
+
+    <input type="number" id="numero" placeholder="Digite um número"><br><br>
+    <button onclick="verificar()">Verificar</button>
+
+
+    <h3 id="resultado"></h3>
+
+
+    <script>
+        function POSITIVO_NEGATIVO(x) {
+            return x > 0;
+        }
+
+
+        function verificar() {
+            let valor = parseInt(document.getElementById("numero").value);
+
+
+            if (isNaN(valor)) {
+                document.getElementById("resultado").innerText = "Por favor, digite um número válido.";
+                return;
+            }
+
+
+            let resultado = POSITIVO_NEGATIVO(valor);
+
+
+            if (resultado) {
+                document.getElementById("resultado").innerText = "O número é positivo!!";
+            } else {
+                document.getElementById("resultado").innerText = "O número é negativo ou zero!!";
+            }
+        }
+    </script>
+</body>
+</html>

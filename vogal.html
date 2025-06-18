@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Vogal</title>
+</head>
+<body>
+    <h2>Digite um caractere:</h2>
+
+
+    <input type="text" id="caractere" maxlength="1" placeholder="Ex: a, b, c"><br><br>
+
+
+    <button onclick="verificarVogal()">Verificar se é Vogal</button>
+
+
+    <h3 id="resultado"></h3>
+
+
+    <script>
+        function VOGAL(c) {
+            c = c.toLowerCase();
+            if (c === 'a' || c === 'e' || c === 'i' || c === 'o' || c === 'u') {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
+
+        function verificarVogal() {
+            let caractere = document.getElementById("caractere").value;
+
+
+            if (caractere === "") {
+                document.getElementById("resultado").innerText = "Por favor, digite um caractere.";
+                return;
+            }
+
+
+            if (caractere.length !== 1 || !isNaN(caractere)) {
+                document.getElementById("resultado").innerText = "Digite apenas uma letra.";
+                return;
+            }
+
+
+            let resultado = VOGAL(caractere);
+
+
+            if (resultado === 1) {
+                document.getElementById("resultado").innerText = "É uma vogal.";
+            } else {
+                document.getElementById("resultado").innerText = "Não é uma vogal.";
+            }
+        }
+    </script>
+</body>
+</html>

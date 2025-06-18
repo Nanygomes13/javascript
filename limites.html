@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Números Pares no Intervalo</title>
+</head>
+<body>
+    <h2>Digite os limites inferior e superior do intervalo:</h2>
+
+
+    <input type="number" id="limiteInferior" placeholder="Limite inferior"><br><br>
+    <input type="number" id="limiteSuperior" placeholder="Limite superior"><br><br>
+
+
+    <button onclick="limites()">Mostrar Pares e Soma</button>
+
+
+    <h3 id="resultado"></h3>
+
+
+    <script>
+        function LIMITES(li, ls) {
+            let pares = [];
+            let soma = 0;
+
+
+            for (let i = li + 1; i < ls; i++) {
+                if (i % 2 === 0) {  
+                    pares.push(i);
+                    soma += i;
+                }
+            }
+
+
+            return { pares, soma };
+        }
+
+
+        function limites() {
+            let li = parseInt(document.getElementById("limiteInferior").value);
+            let ls = parseInt(document.getElementById("limiteSuperior").value);
+
+
+            if (isNaN(li) || isNaN(ls)) {
+                document.getElementById("resultado").innerText = "Por favor, digite os dois limites.";
+                return;
+            }
+
+
+            if (li >= ls) {
+                document.getElementById("resultado").innerText = "O limite inferior deve ser menor que o limite superior.";
+                return;
+            }
+
+
+            let resultado = LIMITES(li, ls);
+
+
+            if (resultado.pares.length === 0) {
+                document.getElementById("resultado").innerText = "Não há números pares no intervalo aberto.";
+                return;
+            }
+
+
+            document.getElementById("resultado").innerHTML =
+                "Números pares no intervalo aberto: " + resultado.pares.join(", ") +
+                "<br>Soma dos números pares: " + resultado.soma;
+        }
+    </script>
+</body>
+</html>
